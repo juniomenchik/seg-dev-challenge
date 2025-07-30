@@ -1,0 +1,3 @@
+class TbCustomers < ApplicationRecord
+
+end
