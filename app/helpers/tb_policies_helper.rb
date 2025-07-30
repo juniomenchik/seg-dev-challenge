@@ -1,0 +1,2 @@
+module TbPoliciesHelper
+end
