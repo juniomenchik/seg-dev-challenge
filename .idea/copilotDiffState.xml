@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/app/controllers/tb_customers_controller.rb">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/app/controllers/tb_customers_controller.rb" />
+              <option name="originalContent" value="class TbCustomersController &lt; ApplicationController&#10;&#10;  skip_before_action :verify_authenticity_token&#10;&#10;  # GET /tb_customers&#10;  def index&#10;    @tb_customers = TbCustomers.all&#10;    render json: @tb_customers&#10;  end&#10;&#10;  # GET /tb_customers/1&#10;  def show&#10;    @tb_customers = TbCustomers.find_by(id: params[:id])&#10;    render json: @tb_customers&#10;  end&#10;&#10;  # GET /tb_customers/1/edit&#10;  def edit&#10;&#10;  end&#10;&#10;&#10;  # POST /tb_customers&#10;  def create&#10;    service = TbCustomerService.new(tb_customer_params.merge(id: params[:id]))&#10;&#10;    result = service.create&#10;    if result[:success]&#10;      render json: result[:tb_customer], status: :created&#10;    else&#10;      render json: result[:errors], status: :unprocessable_entity&#10;    end&#10;  end&#10;&#10;  # PATCH/PUT /tb_customers/1&#10;  def update&#10;&#10;    service = TbCustomerService.update(tb_customer_params.merge(id: params[:id]))&#10;&#10;    result = service.create&#10;    if result[:success]&#10;      render json: result[:tb_customer], status: :created&#10;    else&#10;      render json: result[:errors], status: :unprocessable_entity&#10;    end&#10;  end&#10;&#10;  # DELETE /tb_customers/1&#10;  def destroy&#10;    @tb_customer.destroy!&#10;    redirect_to tb_customers_path, notice: &quot;Tb customer was successfully destroyed.&quot;, status: :see_other&#10;  end&#10;&#10;  private&#10;    # Use callbacks to share common setup or constraints between actions.&#10;    def set_tb_customer&#10;      @tb_customer = TbCustomers.find(params[:id])&#10;    end&#10;&#10;    # Only allow a list of trusted parameters through.&#10;    def tb_customer_params&#10;      params.require(:tb_customer).permit(:username, :password, :role)&#10;    end&#10;end&#10;" />
+              <option name="updatedContent" value="class TbCustomersController &lt; ApplicationController&#10;&#10;  skip_before_action :verify_authenticity_token&#10;&#10;  # GET /tb_customers&#10;  def index&#10;    @tb_customers = TbCustomers.all&#10;    render json: @tb_customers&#10;  end&#10;&#10;  # GET /tb_customers/1&#10;  def show&#10;    @tb_customers = TbCustomers.find_by(id: params[:id])&#10;    render json: @tb_customers&#10;  end&#10;&#10;  # GET /tb_customers/1/edit&#10;  def edit&#10;&#10;  end&#10;&#10;&#10;  # POST /tb_customers&#10;  def create&#10;    service = TbCustomerService.new(tb_customer_params.merge(id: params[:id]))&#10;&#10;    result = service.create&#10;    if result[:success]&#10;      render json: result[:tb_customer], status: :created&#10;    else&#10;      render json: result[:errors], status: :unprocessable_entity&#10;    end&#10;  end&#10;&#10;  # PATCH/PUT /tb_customers/1&#10;  def update&#10;    service = TbCustomerService.new(tb_customer_params.merge(id: params[:id]))&#10;&#10;    result = service.update&#10;    if result[:success]&#10;      render json: result[:tb_customer], status: :ok&#10;    else&#10;      render json: result[:errors], status: :unprocessable_entity&#10;    end&#10;  end&#10;&#10;  # DELETE /tb_customers/1&#10;  def destroy&#10;    @tb_customer.destroy!&#10;    redirect_to tb_customers_path, notice: &quot;Tb customer was successfully destroyed.&quot;, status: :see_other&#10;  end&#10;&#10;  private&#10;    # Use callbacks to share common setup or constraints between actions.&#10;    def set_tb_customer&#10;      @tb_customer = TbCustomers.find(params[:id])&#10;    end&#10;&#10;    # Only allow a list of trusted parameters through.&#10;    def tb_customer_params&#10;      params.require(:tb_customer).permit(:username, :password, :role)&#10;    end&#10;end" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/services/create_tb_customer_service.rb">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/app/services/create_tb_customer_service.rb" />
+              <option name="updatedContent" value="class CreateTbCustomerService&#10;  def initialize(params)&#10;    @params = params&#10;  end&#10;&#10;  def call&#10;    tb_customer = TbCustomers.new(@params)&#10;    tb_customer.createdAt = Time.now&#10;    tb_customer.updatedAt = Time.now&#10;    if tb_customer.save&#10;      { success: true, tb_customer: tb_customer }&#10;    else&#10;      { success: false, errors: tb_customer.errors }&#10;    end&#10;  end&#10;end&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
