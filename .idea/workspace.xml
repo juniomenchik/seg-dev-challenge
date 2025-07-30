@@ -4,13 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1c69684-365b-44d5-8d05-aada0a1c2392" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/copilotDiffState.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/services/tb_customer_service.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+    <list default="true" id="c1c69684-365b-44d5-8d05-aada0a1c2392" name="Changes" comment="[master] adding tb_customers flux, crud, requests and postman tests.">
+      <change afterPath="$PROJECT_DIR$/app/controllers/app_controller.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/middleware/jwt_auth_middleware.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/services/policies_service.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/init.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilotDiffState.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilotDiffState.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/seg-dev-challenge.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/seg-dev-challenge.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/tb_customers_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/tb_customers_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/tb_customer_service.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/tb_customer_service.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/application.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/application.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250730140322_create_tb_customers.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250730140322_create_tb_customers.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,10 +46,10 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="30bA9chc8kF3SIypGC6uwGX16Ux" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -49,6 +61,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Docker.docker-compose.yaml: Compose Deployment.executor": "Run",
     "HTTP Request.All in generated-requests.executor": "Run",
     "HTTP Request.generated-requests | #1.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
@@ -59,7 +72,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.intellij.lang.ruby.rbs.tools.collection.workspace.sync.RbsCollectionUpdateProjectActivity#LAST_UPDATE_TIMESTAMP": "1753885812023",
+    "com.intellij.lang.ruby.rbs.tools.collection.workspace.sync.RbsCollectionUpdateProjectActivity#LAST_UPDATE_TIMESTAMP": "1753894799543",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/git/seg-dev-challenge/app/services",
     "node.js.detected.package.eslint": "true",
@@ -68,6 +81,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "ruby.structure.view.model.defaults.configured": "true",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -150,8 +164,17 @@
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_TESTOPTS" VALUE="" />
       <method v="2" />
     </configuration>
+    <configuration name="docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.docker-compose.yaml: Compose Deployment" />
         <item itemvalue="HTTP Request.generated-requests | #1" />
         <item itemvalue="HTTP Request.All in generated-requests" />
       </list>
@@ -172,12 +195,34 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1753885751704</updated>
-      <workItem from="1753885752129" duration="7276000" />
+      <workItem from="1753885752129" duration="7322000" />
+      <workItem from="1753894741327" duration="13891000" />
     </task>
+    <task id="LOCAL-00001" summary="[master] adding tb_customers flux, crud, requests and postman tests.">
+      <option name="closed" value="true" />
+      <created>1753894347530</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1753894347530</updated>
+    </task>
+    <task id="LOCAL-00002" summary="[master] adding tb_customers flux, crud, requests and postman tests.">
+      <option name="closed" value="true" />
+      <created>1753894358842</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1753894358842</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="[master] adding tb_customers flux, crud, requests and postman tests." />
+    <option name="LAST_COMMIT_MESSAGE" value="[master] adding tb_customers flux, crud, requests and postman tests." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -194,6 +239,6 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/seg_dev_challenge@seg_dev_challenge.rcov" NAME="seg-dev-challenge Coverage Results" MODIFIED="1753891779901" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@seg_dev_challenge.rcov" NAME="seg-dev-challenge Coverage Results" MODIFIED="1753915781495" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
   </component>
 </project>

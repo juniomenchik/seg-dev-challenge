@@ -5,8 +5,8 @@ class TbCustomerService
 
   def create
     tb_customer = TbCustomers.new(@params)
-    tb_customer.createdAt = Time.now
-    tb_customer.updatedAt = Time.now
+    tb_customer.created_at = Time.now
+    tb_customer.updated_at = Time.now
 
     if TbCustomers.exists?(id: tb_customer.id)
       return { success: false, errors: { id: ["CPF has already been taken!!!"] } }
@@ -28,7 +28,7 @@ class TbCustomerService
     return { success: false, errors: { id: ["Customer not found"] } } unless tb_customer
 
     tb_customer.assign_attributes(@params)
-    tb_customer.updatedAt = Time.now
+    tb_customer.updated_at = Time.now
 
     if tb_customer.save
       { success: true, tb_customer: tb_customer }

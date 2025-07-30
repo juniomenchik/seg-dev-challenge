@@ -7,15 +7,7 @@ Olá Jeferson, boa noite! Segue o desafio.
 ## 🧪 Desafio: Sistema de Apólices com Controle de Acesso
 
 Implemente uma aplicação simples para gerenciar apólices de seguro, com **3 tipos de usuários**:
-
-### Papéis (roles)
-
-- **Admin:** acesso completo ao sistema
-- **Operador:** pode visualizar e criar apólices
-- **Cliente:** pode apenas visualizar suas próprias apólices
-
----
-
+ 
 ### Regras
 
 - Um **cliente** pode visualizar apenas suas próprias apólices

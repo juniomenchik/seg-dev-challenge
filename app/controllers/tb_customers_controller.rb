@@ -1,6 +1,14 @@
 class TbCustomersController < ApplicationController
 
+  before_action :require_admin_scope
   skip_before_action :verify_authenticity_token
+
+  def require_admin_scope
+    payload = request.env["jwt.payload"]
+    unless payload && payload["scope"] == "ADMIN_SCOPE"
+      render json: { error: "Acesso restrito para o Scope Admin" }, status: :forbidden
+    end
+  end
 
   # GET /tb_customers
   def index
