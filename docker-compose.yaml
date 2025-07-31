@@ -29,18 +29,22 @@ services:
     networks:
       - internal-network
 
-#  ruby_app:
-#    container_name: ruby_app
-#    image: ruby:3.2-alpine
-#    restart: always
-#    working_dir: /app
-#    volumes:
-#      - ./:/app
-#    command: tail -f /dev/null
-#    depends_on:
-#      - postgres
-#    networks:
-#      - internal-network
+  ruby_app:
+    container_name: ruby_app
+    build: .
+    restart: always
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/app
+    environment:
+      - DOCKERENV=true
+      - RAILS_ENV=development
+    depends_on:
+      - postgres
+    networks:
+      - internal-network
 
 networks:
   internal-network:

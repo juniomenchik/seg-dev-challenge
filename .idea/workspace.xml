@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1c69684-365b-44d5-8d05-aada0a1c2392" name="Changes" comment="[master] Polices refactored to use policy service.">
+    <list default="true" id="c1c69684-365b-44d5-8d05-aada0a1c2392" name="Changes" comment="[master] token was not being monitored his expiration.">
       <change beforePath="$PROJECT_DIR$/.idea/copilotDiffState.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilotDiffState.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/tb_customers_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/tb_customers_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/tb_policies_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/tb_policies_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/tb_token_service.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/tb_token_service.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postman/v1/tb_customers/seg-dev-challenge.postman_collection.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/postman/v1/tb_customers/seg-dev-challenge.postman_test_run.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +50,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Docker.Dockerfile.executor": "Run",
     "Docker.docker-compose.yaml: Compose Deployment.executor": "Run",
     "HTTP Request.All in generated-requests.executor": "Run",
     "HTTP Request.generated-requests | #1.executor": "Run",
@@ -82,7 +85,7 @@
       <recent name="C:\git\seg-dev-challenge\postman\v1" />
     </key>
   </component>
-  <component name="RunManager" selected="Rails.seg-dev-challenge">
+  <component name="RunManager" selected="Docker.docker-compose.yaml: Compose Deployment">
     <configuration name="All in generated-requests" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http">
       <method v="2" />
     </configuration>
@@ -152,6 +155,18 @@
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_TESTOPTS" VALUE="" />
       <method v="2" />
     </configuration>
+    <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile" />
+      <method v="2" />
+    </configuration>
     <configuration name="docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
@@ -163,6 +178,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Docker.docker-compose.yaml: Compose Deployment" />
+        <item itemvalue="Docker.Dockerfile" />
         <item itemvalue="HTTP Request.generated-requests | #1" />
         <item itemvalue="HTTP Request.All in generated-requests" />
       </list>
@@ -186,7 +202,7 @@
       <workItem from="1753885752129" duration="7322000" />
       <workItem from="1753894741327" duration="18393000" />
       <workItem from="1753931611074" duration="12049000" />
-      <workItem from="1753981264445" duration="4796000" />
+      <workItem from="1753981264445" duration="5589000" />
     </task>
     <task id="LOCAL-00001" summary="[master] adding tb_customers flux, crud, requests and postman tests.">
       <option name="closed" value="true" />
@@ -228,7 +244,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753985189326</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="[master] token was not being monitored his expiration.">
+      <option name="closed" value="true" />
+      <created>1753986131627</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1753986131627</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,7 +274,8 @@
     <MESSAGE value="[master] implement JWT authentication and authorization middleware; add token generation endpoint" />
     <MESSAGE value="[master] extra" />
     <MESSAGE value="[master] Polices refactored to use policy service." />
-    <option name="LAST_COMMIT_MESSAGE" value="[master] Polices refactored to use policy service." />
+    <MESSAGE value="[master] token was not being monitored his expiration." />
+    <option name="LAST_COMMIT_MESSAGE" value="[master] token was not being monitored his expiration." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -270,22 +295,6 @@
             <option name="block-ordinal" value="-1" />
           </properties>
           <option name="timeStamp" value="79" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/app/controllers/tb_policies_controller.rb</url>
-          <line>53</line>
-          <properties myBlockOrdinal="-1">
-            <option name="block-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="87" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/app/controllers/tb_policies_controller.rb</url>
-          <line>51</line>
-          <properties myBlockOrdinal="-1">
-            <option name="block-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="91" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

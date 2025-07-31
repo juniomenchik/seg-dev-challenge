@@ -3,6 +3,15 @@
   <component name="CopilotDiffPersistence">
     <option name="pendingDiffs">
       <map>
+        <entry key="$PROJECT_DIR$/Dockerfile">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/Dockerfile" />
+              <option name="originalContent" value="# Use the official Ruby image as the base image&#10;FROM ruby:3.2.1&#10;&#10;# Set environment variables to avoid installing documentation for gems&#10;ENV BUNDLE_PATH=/gems \&#10;    BUNDLE_JOBS=4 \&#10;    BUNDLE_RETRY=3 \&#10;    BUNDLE_APP_CONFIG=/gems/config&#10;&#10;# Set the working directory inside the container&#10;WORKDIR /app&#10;&#10;# Copy the Gemfile and Gemfile.lock into the container&#10;COPY Gemfile Gemfile.lock ./&#10;&#10;# Install dependencies&#10;RUN bundle install&#10;&#10;# Copy the rest of the application code into the container&#10;COPY . .&#10;&#10;# Expose the port your app runs on (e.g., 3000 for Rails apps)&#10;EXPOSE 3000&#10;&#10;# Define the command to run your application&#10;CMD [&quot;ruby&quot;, &quot;app.rb&quot;]&#10;# Replace with your app's entry point, e.g., `rails server` for Rails apps" />
+              <option name="updatedContent" value="# Use the official Ruby image as the base image&#10;FROM ruby:3.2.1&#10;&#10;# Install system dependencies&#10;RUN apt-get update -qq &amp;&amp; \&#10;    apt-get install -y build-essential libpq-dev nodejs &amp;&amp; \&#10;    rm -rf /var/lib/apt/lists/*&#10;&#10;# Set environment variables&#10;ENV RAILS_ENV=development \&#10;    BUNDLE_PATH=/gems \&#10;    BUNDLE_JOBS=4 \&#10;    BUNDLE_RETRY=3&#10;&#10;# Set the working directory inside the container&#10;WORKDIR /app&#10;&#10;# Copy the Gemfile and Gemfile.lock into the container&#10;COPY Gemfile Gemfile.lock ./&#10;&#10;# Install dependencies&#10;RUN bundle install&#10;&#10;# Copy the rest of the application code into the container&#10;COPY . .&#10;&#10;# Create necessary directories&#10;RUN mkdir -p tmp/pids&#10;&#10;# Expose the port your app runs on&#10;EXPOSE 3000&#10;&#10;# Define the command to run your Rails application&#10;CMD [&quot;bundle&quot;, &quot;exec&quot;, &quot;rails&quot;, &quot;server&quot;, &quot;-b&quot;, &quot;0.0.0.0&quot;]" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/controllers/tb_customers_controller.rb">
           <value>
             <PendingDiffInfo>
@@ -64,6 +73,15 @@
             </PendingDiffInfo>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/config/database.yml">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/config/database.yml" />
+              <option name="originalContent" value="# SQLite. Versions 3.8.0 and up are supported.&#10;#   gem install sqlite3&#10;#&#10;#   Ensure the SQLite 3 gem is defined in your Gemfile&#10;#   gem &quot;sqlite3&quot;&#10;#&#10;default: &amp;default&#10;  adapter: sqlite3&#10;  pool: &lt;%= ENV.fetch(&quot;RAILS_MAX_THREADS&quot;) { 5 } %&gt;&#10;  timeout: 5000&#10;&#10;development:&#10;  &lt;&lt;: *default&#10;  adapter: postgresql&#10;  encoding: unicode&#10;  host: localhost&#10;  username: postgres&#10;  password: postgres&#10;  database: postgres&#10;&#10;# Warning: The database defined as &quot;test&quot; will be erased and&#10;# re-generated from your development database when you run &quot;rake&quot;.&#10;# Do not set this db to the same as development or production.&#10;test:&#10;  &lt;&lt;: *default&#10;  database: storage/test.sqlite3&#10;&#10;&#10;# Store production database in the storage/ directory, which by default&#10;# is mounted as a persistent Docker volume in config/deploy.yml.&#10;production:&#10;  primary:&#10;    &lt;&lt;: *default&#10;    database: storage/production.sqlite3&#10;  cache:&#10;    &lt;&lt;: *default&#10;    database: storage/production_cache.sqlite3&#10;    migrations_paths: db/cache_migrate&#10;  queue:&#10;    &lt;&lt;: *default&#10;    database: storage/production_queue.sqlite3&#10;    migrations_paths: db/queue_migrate&#10;  cable:&#10;    &lt;&lt;: *default&#10;    database: storage/production_cable.sqlite3&#10;    migrations_paths: db/cable_migrate&#10;" />
+              <option name="updatedContent" value="# SQLite. Versions 3.8.0 and up are supported.&#10;#   gem install sqlite3&#10;#&#10;#   Ensure the SQLite 3 gem is defined in your Gemfile&#10;#   gem &quot;sqlite3&quot;&#10;#&#10;default: &amp;default&#10;  adapter: sqlite3&#10;  pool: &lt;%= ENV.fetch(&quot;RAILS_MAX_THREADS&quot;) { 5 } %&gt;&#10;  timeout: 5000&#10;&#10;development:&#10;  &lt;&lt;: *default&#10;  adapter: postgresql&#10;  encoding: unicode&#10;  host: &lt;%= ENV['DOCKERENV'] ? 'postgres' : 'localhost' %&gt;&#10;  username: postgres&#10;  password: postgres&#10;  database: postgres&#10;&#10;# Warning: The database defined as &quot;test&quot; will be erased and&#10;# re-generated from your development database when you run &quot;rake&quot;.&#10;# Do not set this db to the same as development or production.&#10;test:&#10;  &lt;&lt;: *default&#10;  database: storage/test.sqlite3&#10;&#10;&#10;# Store production database in the storage/ directory, which by default&#10;# is mounted as a persistent Docker volume in config/deploy.yml.&#10;production:&#10;  primary:&#10;    &lt;&lt;: *default&#10;    database: storage/production.sqlite3&#10;  cache:&#10;    &lt;&lt;: *default&#10;    database: storage/production_cache.sqlite3&#10;    migrations_paths: db/cache_migrate&#10;  queue:&#10;    &lt;&lt;: *default&#10;    database: storage/production_queue.sqlite3&#10;    migrations_paths: db/queue_migrate&#10;  cable:&#10;    &lt;&lt;: *default&#10;    database: storage/production_cable.sqlite3&#10;    migrations_paths: db/cable_migrate" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/config/environments/development.rb">
           <value>
             <PendingDiffInfo>
@@ -77,6 +95,15 @@
           <value>
             <PendingDiffInfo>
               <option name="filePath" value="$PROJECT_DIR$/db/migrate/20250730180000_rename_created_at_and_updated_at_in_tb_customers.rb" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/docker-compose.yaml">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/docker-compose.yaml" />
+              <option name="originalContent" value="services:&#10;&#10;  postgres:&#10;    container_name: postgres&#10;    image: postgres:15-alpine&#10;    restart: always&#10;    ports:&#10;      - &quot;5432:5432&quot;&#10;    environment:&#10;      POSTGRES_USER: postgres&#10;      POSTGRES_PASSWORD: postgres&#10;      POSTGRES_DB: postgres&#10;    volumes:&#10;      - postgres_data:/var/lib/postgresql/data&#10;      - ./init.sql:/docker-entrypoint-initdb.d/init.sql&#10;    networks:&#10;      - internal-network&#10;&#10;  adminer:&#10;    image: adminer&#10;    container_name: adminer&#10;    restart: always&#10;    ports:&#10;      - &quot;5400:8080&quot;&#10;    depends_on:&#10;      - postgres&#10;    environment:&#10;      ADMINER_DEFAULT_SERVER: postgres&#10;    networks:&#10;      - internal-network&#10;&#10;  ruby_app:&#10;    container_name: ruby_app&#10;    build: .&#10;    restart: always&#10;    working_dir: /app&#10;    ports:&#10;      - &quot;3000:3000&quot;&#10;    volumes:&#10;      - ./:/app&#10;    environment:&#10;      - DOCKERENV=true&#10;      - RAILS_ENV=development&#10;    depends_on:&#10;      - postgres&#10;    networks:&#10;      - internal-network&#10;&#10;networks:&#10;  internal-network:&#10;    driver: bridge&#10;&#10;volumes:&#10;  postgres_data:" />
+              <option name="updatedContent" value="services:&#10;&#10;  postgres:&#10;    container_name: postgres&#10;    image: postgres:15-alpine&#10;    restart: always&#10;    ports:&#10;      - &quot;5432:5432&quot;&#10;    environment:&#10;      POSTGRES_USER: postgres&#10;      POSTGRES_PASSWORD: postgres&#10;      POSTGRES_DB: postgres&#10;    volumes:&#10;      - postgres_data:/var/lib/postgresql/data&#10;      - ./init.sql:/docker-entrypoint-initdb.d/init.sql&#10;    networks:&#10;      - internal-network&#10;&#10;  adminer:&#10;    image: adminer&#10;    container_name: adminer&#10;    restart: always&#10;    ports:&#10;      - &quot;5400:8080&quot;&#10;    depends_on:&#10;      - postgres&#10;    environment:&#10;      ADMINER_DEFAULT_SERVER: postgres&#10;    networks:&#10;      - internal-network&#10;&#10;  ruby_app:&#10;    container_name: ruby_app&#10;    build: .&#10;    restart: always&#10;    working_dir: /app&#10;    ports:&#10;      - &quot;3000:3000&quot;&#10;    volumes:&#10;      - ./:/app&#10;    environment:&#10;      - DOCKERENV=true&#10;      - RAILS_ENV=development&#10;    depends_on:&#10;      - postgres&#10;    networks:&#10;      - internal-network&#10;&#10;networks:&#10;  internal-network:&#10;    driver: bridge&#10;&#10;volumes:&#10;  postgres_data:" />
             </PendingDiffInfo>
           </value>
         </entry>

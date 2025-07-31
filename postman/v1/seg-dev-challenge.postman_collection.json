@@ -1,0 +1,1103 @@
+{
+	"info": {
+		"_postman_id": "377784ed-0b78-442f-a9f2-0c53afc0dd4e",
+		"name": "seg-dev-challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16001297",
+		"_collection_link": "https://jeffs-workhome.postman.co/workspace/PERSONAL-SPACE~2759921e-d7a6-4dbb-b5a1-156391205581/collection/16001297-377784ed-0b78-442f-a9f2-0c53afc0dd4e?action=share&source=collection_link&creator=16001297"
+	},
+	"item": [
+		{
+			"name": "/api/v1/",
+			"item": [
+				{
+					"name": "Gerar token",
+					"item": [
+						{
+							"name": "Gerar token (admin)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const responseData = pm.response.json();\r",
+											"// Set the generated CPF as an environment variable\r",
+											"pm.collectionVariables.set('token', responseData.token);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "11112000",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "juniomenchik",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{ruby_on_rails_host}}/app/token",
+									"host": [
+										"{{ruby_on_rails_host}}"
+									],
+									"path": [
+										"app",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gerar token (operator)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const responseData = pm.response.json();\r",
+											"// Set the generated CPF as an environment variable\r",
+											"pm.collectionVariables.set('token', responseData.token);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "operador123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "operador",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{ruby_on_rails_host}}/app/token",
+									"host": [
+										"{{ruby_on_rails_host}}"
+									],
+									"path": [
+										"app",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gerar token (user)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const responseData = pm.response.json();\r",
+											"// Set the generated CPF as an environment variable\r",
+											"pm.collectionVariables.set('token', responseData.token);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "cliente123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "cliente",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{ruby_on_rails_host}}/app/token",
+									"host": [
+										"{{ruby_on_rails_host}}"
+									],
+									"path": [
+										"app",
+										"token"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "/tb_customers [ADMIN]",
+					"item": [
+						{
+							"name": "Create",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Generate a random CPF number and set it as an environment variable\r",
+											"function generateRandomCPF() {\r",
+											"    let cpf = '';\r",
+											"    for (let i = 0; i < 9; i++) {\r",
+											"        cpf += Math.floor(Math.random() * 10).toString();\r",
+											"    }\r",
+											"    // Add two check digits (not a real CPF validation)\r",
+											"    cpf += calculateCheckDigits(cpf);\r",
+											"    return cpf;\r",
+											"}\r",
+											"\r",
+											"function calculateCheckDigits(cpf) {\r",
+											"    let sum1 = 0;\r",
+											"    let sum2 = 0;\r",
+											"\r",
+											"    for (let i = 0; i < 9; i++) {\r",
+											"        sum1 += parseInt(cpf[i]) * (10 - i);\r",
+											"        sum2 += parseInt(cpf[i]) * (11 - i);\r",
+											"    }\r",
+											"\r",
+											"    let firstCheckDigit = (sum1 * 10) % 11;\r",
+											"    firstCheckDigit = firstCheckDigit >= 10 ? 0 : firstCheckDigit;\r",
+											"    sum2 += firstCheckDigit * 2;\r",
+											"    let secondCheckDigit = (sum2 * 10) % 11;\r",
+											"    secondCheckDigit = secondCheckDigit >= 10 ? 0 : secondCheckDigit;\r",
+											"\r",
+											"    return firstCheckDigit.toString() + secondCheckDigit.toString();\r",
+											"}\r",
+											"\r",
+											"// Generate a strong password\r",
+											"function generateStrongPassword(length = 12) {\r",
+											"    const charset = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+{}[]:;<>?,.\";\r",
+											"    let password = '';\r",
+											"    for (let i = 0; i < length; i++) {\r",
+											"        const randomIndex = Math.floor(Math.random() * charset.length);\r",
+											"        password += charset[randomIndex];\r",
+											"    }\r",
+											"    return password;\r",
+											"}\r",
+											"\r",
+											"\r",
+											"\r",
+											"// Set the generated CPF as an environment variable\r",
+											"pm.collectionVariables.set('cpf_atual', generateRandomCPF());\r",
+											"// Set a strong password as an environment variable\r",
+											"pm.collectionVariables.set('senha_atual', generateStrongPassword(12));\r",
+											"// Set the username as an environment variable\r",
+											"pm.collectionVariables.set('username_atual', \"usuario_exemplo_\"+generateRandomCPF());\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 201\", function () {",
+											"    pm.expect(pm.response.code).to.equal(201);",
+											"});",
+											"",
+											"pm.test(\"Response has the required fields\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData).to.have.all.keys('id', 'username', 'password', 'role', 'createdAt', 'updatedAt');",
+											"});",
+											"",
+											"pm.test(\"Username is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.username).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Username should not be empty\");",
+											"});",
+											"",
+											"pm.test(\"Password meets complexity requirements\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.have.property('password').that.is.a('string').and.satisfies(password => {",
+											"        return password.length >= 8 && /[A-Z]/.test(password) && /[a-z]/.test(password) && /[0-9]/.test(password) && /[!@#$%^&*]/.test(password);",
+											"    }, \"Password must be at least 8 characters long and include uppercase, lowercase, number, and special character.\");",
+											"});",
+											"",
+											"pm.test(\"CreatedAt and updatedAt are in valid date format\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData).to.have.all.keys('id', 'username', 'password', 'role', 'createdAt', 'updatedAt');",
+											"    ",
+											"    const dateFormatRegex = /^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z$/; // ISO 8601 format",
+											"",
+											"    pm.expect(responseData.createdAt).to.match(dateFormatRegex, \"CreatedAt is not in a valid date format\");",
+											"    pm.expect(responseData.updatedAt).to.match(dateFormatRegex, \"UpdatedAt is not in a valid date format\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"{{cpf_atual}}\",\r\n    \"username\": \"{{username_atual}}\",\r\n    \"password\": \"{{senha_atual}}\",\r\n    \"role\": \"admin\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ruby_on_rails_host}}/app/v1/tb_customers",
+									"host": [
+										"{{ruby_on_rails_host}}"
+									],
+									"path": [
+										"app",
+										"v1",
+										"tb_customers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FindAll",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.expect(pm.response.status).to.equal(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response is an array with at least one customer object\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+											"    responseData.forEach(function(customer) {",
+											"        pm.expect(customer).to.be.an('object');",
+											"    });",
+											"});",
+											"",
+											"",
+											"pm.test(\"Validate the customer object fields\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+											"    ",
+											"    responseData.forEach(customer => {",
+											"        pm.expect(customer).to.be.an('object');",
+											"        pm.expect(customer).to.have.all.keys('id', 'username', 'password', 'role', 'createdAt', 'updatedAt');",
+											"        pm.expect(customer.id).to.be.a('string');",
+											"        pm.expect(customer.username).to.be.a('string');",
+											"        pm.expect(customer.password).to.be.a('string');",
+											"        pm.expect(customer.role).to.be.a('string');",
+											"        pm.expect(customer.createdAt).to.be.a('string'); // Assuming date is in string format",
+											"        pm.expect(customer.updatedAt).to.be.a('string'); // Assuming date is in string format",
+											"    });",
+											"});",
+											"",
+											"",
+											"pm.test(\"Username is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+											"    responseData.forEach(customer => {",
+											"        pm.expect(customer.username).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Username should not be empty\");",
+											"    });",
+											"});",
+											"",
+											"",
+											"pm.test(\"createdAt and updatedAt are in valid date format\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('array');",
+											"    ",
+											"    responseData.forEach(customer => {",
+											"        pm.expect(customer.createdAt).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z$/, \"createdAt should be in ISO 8601 format\");",
+											"        pm.expect(customer.updatedAt).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z$/, \"updatedAt should be in ISO 8601 format\");",
+											"    });",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ruby_on_rails_host}}/app/v1/tb_customers",
+									"host": [
+										"{{ruby_on_rails_host}}"
+									],
+									"path": [
+										"app",
+										"v1",
+										"tb_customers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FindById",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.expect(pm.response.code).to.equal(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has required fields\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData).to.have.all.keys('id', 'username', 'password', 'role', 'createdAt', 'updatedAt');",
+											"});",
+											"",
+											"",
+											"pm.test(\"Username must be a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.username).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"Role is one of the expected values\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.role).to.be.oneOf(['admin', 'user', 'guest']);",
+											"});",
+											"",
+											"",
+											"pm.test(\"CreatedAt and updatedAt are in a valid date format\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(new Date(responseData.createdAt).getTime()).to.not.be.NaN;",
+											"    pm.expect(new Date(responseData.updatedAt).getTime()).to.not.be.NaN;",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ruby_on_rails_host}}/app/v1/tb_customers/{{cpf_atual}}",
+									"host": [
+										"{{ruby_on_rails_host}}"
+									],
+									"path": [
+										"app",
+										"v1",
+										"tb_customers",
+										"{{cpf_atual}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Put",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.expect(pm.response.code).to.equal(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has required fields\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData).to.have.all.keys('username', 'password', 'role', 'id', 'updatedAt', 'createdAt');",
+											"});",
+											"",
+											"",
+											"pm.test(\"Username must be a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.username).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Username should not be empty\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"The password length must be at least 8 characters\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.password).to.exist.and.to.have.lengthOf.at.least(8, \"Password must meet the minimum length requirement\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"ID must be a valid format (non-negative integer)\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.id).to.exist.and.to.satisfy(function(id) {",
+											"        return Number.isInteger(Number(id)) && Number(id) >= 0;",
+											"    }, \"ID should be a non-negative integer\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"04636075030\",\r\n    \"username\": \"usuario_putado\",\r\n    \"password\": \"senha_segura\",\r\n    \"role\": \"admin\",\r\n    \"createdAt\": \"2025-07-30T16:10:57.809Z\",\r\n    \"updatedAt\": \"2025-07-30T16:10:57.809Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ruby_on_rails_host}}/app/v1/tb_customers/{{cpf_atual}}",
+									"host": [
+										"{{ruby_on_rails_host}}"
+									],
+									"path": [
+										"app",
+										"v1",
+										"tb_customers",
+										"{{cpf_atual}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Patch",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.expect(pm.response.code).to.eql(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has required fields\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData).to.have.all.keys('role', 'id', 'updatedAt', 'username', 'password', 'createdAt');",
+											"});",
+											"",
+											"",
+											"pm.test(\"Username is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.username).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Username should not be empty\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"Ensure updatedAt is in a valid date format\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.updatedAt).to.exist;",
+											"    pm.expect(new Date(responseData.updatedAt).getTime()).to.not.be.NaN;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"role\": \"user\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ruby_on_rails_host}}/app/v1/tb_customers/{{cpf_atual}}",
+									"host": [
+										"{{ruby_on_rails_host}}"
+									],
+									"path": [
+										"app",
+										"v1",
+										"tb_customers",
+										"{{cpf_atual}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteById",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{ruby_on_rails_host}}/app/v1/tb_customers/{{cpf_atual}}",
+									"host": [
+										"{{ruby_on_rails_host}}"
+									],
+									"path": [
+										"app",
+										"v1",
+										"tb_customers",
+										"{{cpf_atual}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "/tb_policies",
+					"item": [
+						{
+							"name": "FindAll",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"packages": {},
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ruby_on_rails_host}}/app/v1/tb_policies",
+									"host": [
+										"{{ruby_on_rails_host}}"
+									],
+									"path": [
+										"app",
+										"v1",
+										"tb_policies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Generate a random CPF number and set it as an environment variable\r",
+											"function generateRandomCPF() {\r",
+											"    let cpf = '';\r",
+											"    for (let i = 0; i < 9; i++) {\r",
+											"        cpf += Math.floor(Math.random() * 10).toString();\r",
+											"    }\r",
+											"    // Add two check digits (not a real CPF validation)\r",
+											"    cpf += calculateCheckDigits(cpf);\r",
+											"    return cpf;\r",
+											"}\r",
+											"\r",
+											"function calculateCheckDigits(cpf) {\r",
+											"    let sum1 = 0;\r",
+											"    let sum2 = 0;\r",
+											"\r",
+											"    for (let i = 0; i < 9; i++) {\r",
+											"        sum1 += parseInt(cpf[i]) * (10 - i);\r",
+											"        sum2 += parseInt(cpf[i]) * (11 - i);\r",
+											"    }\r",
+											"\r",
+											"    let firstCheckDigit = (sum1 * 10) % 11;\r",
+											"    firstCheckDigit = firstCheckDigit >= 10 ? 0 : firstCheckDigit;\r",
+											"    sum2 += firstCheckDigit * 2;\r",
+											"    let secondCheckDigit = (sum2 * 10) % 11;\r",
+											"    secondCheckDigit = secondCheckDigit >= 10 ? 0 : secondCheckDigit;\r",
+											"\r",
+											"    return firstCheckDigit.toString() + secondCheckDigit.toString();\r",
+											"}\r",
+											"\r",
+											"// Generate a strong password\r",
+											"function generateStrongPassword(length = 12) {\r",
+											"    const charset = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+{}[]:;<>?,.\";\r",
+											"    let password = '';\r",
+											"    for (let i = 0; i < length; i++) {\r",
+											"        const randomIndex = Math.floor(Math.random() * charset.length);\r",
+											"        password += charset[randomIndex];\r",
+											"    }\r",
+											"    return password;\r",
+											"}\r",
+											"\r",
+											"\r",
+											"\r",
+											"// Set the generated CPF as an environment variable\r",
+											"pm.collectionVariables.set('cpf_atual', generateRandomCPF());\r",
+											"// Set a strong password as an environment variable\r",
+											"pm.collectionVariables.set('senha_atual', generateStrongPassword(12));\r",
+											"// Set the username as an environment variable\r",
+											"pm.collectionVariables.set('username_atual', \"usuario_exemplo_\"+generateRandomCPF());\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const responseData = pm.response.json();",
+											"// Set the generated CPF as an environment variable",
+											"pm.collectionVariables.set('policy_id', responseData.id);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"start_date\": \"2023-01-01T00:00:00Z\",\r\n    \"end_date\": \"2023-12-31T23:59:59Z\",\r\n    \"status\": \"ACTIVE\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ruby_on_rails_host}}/app/v1/tb_policies",
+									"host": [
+										"{{ruby_on_rails_host}}"
+									],
+									"path": [
+										"app",
+										"v1",
+										"tb_policies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FindById",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.expect(pm.response.code).to.equal(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has required fields\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData).to.have.all.keys('id', 'username', 'password', 'role', 'createdAt', 'updatedAt');",
+											"});",
+											"",
+											"",
+											"pm.test(\"Username must be a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.username).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"Role is one of the expected values\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.role).to.be.oneOf(['admin', 'user', 'guest']);",
+											"});",
+											"",
+											"",
+											"pm.test(\"CreatedAt and updatedAt are in a valid date format\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(new Date(responseData.createdAt).getTime()).to.not.be.NaN;",
+											"    pm.expect(new Date(responseData.updatedAt).getTime()).to.not.be.NaN;",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ruby_on_rails_host}}/app/v1/tb_policies/{{policy_id}}",
+									"host": [
+										"{{ruby_on_rails_host}}"
+									],
+									"path": [
+										"app",
+										"v1",
+										"tb_policies",
+										"{{policy_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Put",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.expect(pm.response.code).to.equal(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has required fields\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData).to.have.all.keys('username', 'password', 'role', 'id', 'updatedAt', 'createdAt');",
+											"});",
+											"",
+											"",
+											"pm.test(\"Username must be a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.username).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Username should not be empty\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"The password length must be at least 8 characters\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.password).to.exist.and.to.have.lengthOf.at.least(8, \"Password must meet the minimum length requirement\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"ID must be a valid format (non-negative integer)\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.id).to.exist.and.to.satisfy(function(id) {",
+											"        return Number.isInteger(Number(id)) && Number(id) >= 0;",
+											"    }, \"ID should be a non-negative integer\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"04636075030\",\r\n    \"username\": \"usuario_putado\",\r\n    \"password\": \"senha_segura\",\r\n    \"role\": \"admin\",\r\n    \"createdAt\": \"2025-07-30T16:10:57.809Z\",\r\n    \"updatedAt\": \"2025-07-30T16:10:57.809Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ruby_on_rails_host}}/app/v1/tb_policies/{{policy_id}}",
+									"host": [
+										"{{ruby_on_rails_host}}"
+									],
+									"path": [
+										"app",
+										"v1",
+										"tb_policies",
+										"{{policy_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteById",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{ruby_on_rails_host}}/app/v1/tb_policies/{{policy_id}}",
+									"host": [
+										"{{ruby_on_rails_host}}"
+									],
+									"path": [
+										"app",
+										"v1",
+										"tb_policies",
+										"{{policy_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "ruby_on_rails_host",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "cpf_atual",
+			"value": ""
+		},
+		{
+			"key": "senha_atual",
+			"value": ""
+		},
+		{
+			"key": "username_atual",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "token",
+			"value": ""
+		},
+		{
+			"key": "policy_id",
+			"value": ""
+		}
+	]
+}
