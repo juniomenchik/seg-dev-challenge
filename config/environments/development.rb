@@ -3,6 +3,9 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Disable migration check since we use custom SQL script
+  config.active_record.migration_error = false
+
   # Make code changes take effect immediately without server restart.
   config.enable_reloading = true
 
@@ -43,8 +46,14 @@ Rails.application.configure do
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
-  # Raise an error on page load if there are pending migrations.
-  config.active_record.migration_error = :page_load
+  # Raise exceptions for disallowed deprecations.
+  config.active_support.disallowed_deprecation = :raise
+
+  # Tell Active Support which deprecation messages to disallow.
+  config.active_support.disallowed_deprecation_warnings = []
+
+  # Disable migration check - we use custom SQL script (commented out the original line)
+  # config.active_record.migration_error = :page_load
 
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true

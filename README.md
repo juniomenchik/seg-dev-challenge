@@ -52,6 +52,22 @@ Você terá até o dia **02/08** para terminar. Se não conseguir finalizar tudo
 
 
 [desafios proprios.]
- - docker-compose up 
+ - docker-compose up  [ OK ]
  - Testes unitários.
  - Teste de container.
+
+
+## 📝 Instruções
+# Necessario Docker na máquina
+
+$git clone https://github.com/juniomenchik/seg-dev-challenge.git
+$cd seg-dev-challenge
+$docker-compose up -d
+
+
+# Acesse o banco de dados em http://localhost:5400/
+
+# gerar token
+curl --location --request POST 'http://localhost:3000/app/token' \
+--header 'Authorization: Basic anVuaW9tZW5jaGlrOjExMTEyMDAw'
+

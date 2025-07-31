@@ -30,14 +30,6 @@ VALUES ('04636075030',
         '2025-07-30 16:31:58.465026');
 
 INSERT INTO tb_customers (id, username, password, role, created_at, updated_at)
-VALUES ('04636075030',
-        'juniomenchik',
-        '11112000',
-        'Admin',
-        '2025-07-30 16:31:58.465026',
-        '2025-07-30 16:31:58.465026');
-
-INSERT INTO tb_customers (id, username, password, role, created_at, updated_at)
 VALUES ('00011122233',
         'operador',
         'operador123',

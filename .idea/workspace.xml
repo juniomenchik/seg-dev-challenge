@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1c69684-365b-44d5-8d05-aada0a1c2392" name="Changes" comment="[master] token was not being monitored his expiration.">
+    <list default="true" id="c1c69684-365b-44d5-8d05-aada0a1c2392" name="Changes" comment="[master] docker-compose well configured. Database go on with no errors.">
       <change beforePath="$PROJECT_DIR$/.idea/copilotDiffState.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilotDiffState.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postman/v1/tb_customers/seg-dev-challenge.postman_collection.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postman/v1/tb_customers/seg-dev-challenge.postman_test_run.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/environments/development.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/environments/development.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +199,7 @@
       <workItem from="1753885752129" duration="7322000" />
       <workItem from="1753894741327" duration="18393000" />
       <workItem from="1753931611074" duration="12049000" />
-      <workItem from="1753981264445" duration="5589000" />
+      <workItem from="1753981264445" duration="6483000" />
     </task>
     <task id="LOCAL-00001" summary="[master] adding tb_customers flux, crud, requests and postman tests.">
       <option name="closed" value="true" />
@@ -252,7 +249,23 @@
       <option name="project" value="LOCAL" />
       <updated>1753986131627</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="[master] docker-compose well configured. Database go on with no errors.">
+      <option name="closed" value="true" />
+      <created>1753987008073</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1753987008073</updated>
+    </task>
+    <task id="LOCAL-00008" summary="[master] docker-compose well configured. Database go on with no errors.">
+      <option name="closed" value="true" />
+      <created>1753987017009</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1753987017009</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,7 +288,8 @@
     <MESSAGE value="[master] extra" />
     <MESSAGE value="[master] Polices refactored to use policy service." />
     <MESSAGE value="[master] token was not being monitored his expiration." />
-    <option name="LAST_COMMIT_MESSAGE" value="[master] token was not being monitored his expiration." />
+    <MESSAGE value="[master] docker-compose well configured. Database go on with no errors." />
+    <option name="LAST_COMMIT_MESSAGE" value="[master] docker-compose well configured. Database go on with no errors." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
