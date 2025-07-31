@@ -21,7 +21,6 @@ class TbPolicyCreatorService
       return { success: false, errors: ["O policy_number deve ter exatamente 12 dígitos."] }
     end
 
-
     tb_policy.policy_number = @params["policy_number"]
     tb_policy.tb_customer_id = @params["tb_customer_id"]
     tb_policy.start_date = @params[:start_date]
@@ -33,6 +32,24 @@ class TbPolicyCreatorService
       { success: true, tb_policy: tb_policy }
     else
       { success: false, errors: tb_policy.errors.full_messages }
+    end
+  end
+
+  def findById(id)
+    @tb_policy = TbPolicy.find_by(id: id)
+
+    if @tb_policy.nil?
+      return { success: false, errors: ["Police não encontrado para o ID informado."] }
+    end
+
+    # Verificar se o usuário tem permissão para acessar esta policy
+    user_scopes = @payload && @payload["scope"].to_s.split
+    user_cpf = @payload && @payload["sub"]
+
+    if user_scopes && (user_scopes.include?("ADMIN_SCOPE") || user_scopes.include?("OPERATOR_SCOPE")) || @tb_policy.tb_customer_id == user_cpf
+      { success: true, tb_policy: @tb_policy }
+    else
+      { success: false, errors: ["Acesso negado."] }
     end
   end
 
@@ -68,4 +85,38 @@ class TbPolicyCreatorService
       { success: false, errors: tb_policy.errors.full_messages }
     end
   end
+
+  def findAll(id = nil)
+    @tb_policies = TbPolicy.all
+    { success: true, tb_policies: @tb_policies }
+  end
+
+  def findAllById(customer_id)
+    @tb_policies = TbPolicy.where(tb_customer_id: customer_id)
+    { success: true, tb_policies: @tb_policies }
+  end
+
+  def deleteById(id)
+    @tb_policy = TbPolicy.find_by(id: id)
+
+    if @tb_policy.nil?
+      return { success: false, errors: ["Policy não encontrado para o ID informado."] }
+    end
+
+    # Verificar se o usuário tem permissão para deletar esta policy
+    user_scopes = @payload && @payload["scope"].to_s.split
+    user_cpf = @payload && @payload["sub"]
+
+    # Apenas ADMIN_SCOPE pode deletar policies
+    unless user_scopes && user_scopes.include?("ADMIN_SCOPE")
+      return { success: false, errors: ["Apenas administradores podem deletar policies."] }
+    end
+
+    if @tb_policy.destroy
+      { success: true, message: "Policy deletado com sucesso." }
+    else
+      { success: false, errors: @tb_policy.errors.full_messages }
+    end
+  end
+
 end
