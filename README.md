@@ -10,8 +10,8 @@ Implemente uma aplicação simples para gerenciar apólices de seguro, com **3 t
  
 ### Regras
 
-- Um **cliente** pode visualizar apenas suas próprias apólices
-- Um **operador** pode criar e visualizar todas as apólices
+- Um **cliente** pode visualizar apenas as suas próprias apólices [OK]
+- Um **operador** pode criar e visualizar todas as apólices [OK]  
 - Um **admin** pode criar, editar, excluir e visualizar todas as apólices
 - A apólice deve conter no mínimo:
   - Número da apólice com 12 dígitos
@@ -49,3 +49,9 @@ Implemente uma aplicação simples para gerenciar apólices de seguro, com **3 t
 Quando terminar, responda este e-mail com o link do repositório público no GitHub ou GitLab.
 
 Você terá até o dia **02/08** para terminar. Se não conseguir finalizar tudo no tempo, envie o que conseguiu.
+
+
+[desafios proprios.]
+ - docker-compose up 
+ - Testes unitários.
+ - Teste de container.

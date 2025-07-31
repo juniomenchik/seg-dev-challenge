@@ -5,10 +5,6 @@ class TbPoliciesController < ApplicationController
   before_action only: [:edit, :update] do
     require_scope!("ADMIN_SCOPE")
   end
-  # Se quiser proteger o index também, descomente a linha abaixo:
-  # before_action only: [:index] do
-  #   require_scope!("admin_scope")
-  # end
 
   # Método reutilizável para checagem de escopos
   def require_scope!(*scopes)
@@ -31,35 +27,57 @@ class TbPoliciesController < ApplicationController
   def index
     if has_scope?(["ADMIN_SCOPE", "OPERATOR_SCOPE"])
       @tb_policies = TbPolicy.all
-      render json: @tb_policies, status: :ok
-    else
-      payload = request.env["jwt.payload"]
-      cpf = payload && payload["sub"]
-      if cpf
-        policy = TbPolicy.find_by_tb_customer_id(cpf)
-        if policy
-          render json: policy, status: :ok
-        else
-          render json: { error: "Policy não encontrada para o CPF informado" }, status: :not_found
-        end
-      else
-        render json: { error: "Token inválido ou sem CPF" }, status: :unauthorized
-      end
+      # render json: @tb_policies, status: :ok
     end
+    jwt = request.env["jwt.payload"]
+    @tb_policies = TbPolicy.find_by(tb_customer_id: jwt["sub"])
+
+    render json: @tb_policies, status: :ok
   end
 
-  # GET /tb_policies/1
   def show
+    unless has_scope?(["ADMIN_SCOPE", "OPERATOR_SCOPE"])
+      render json: { error: "Acesso restrito para seu conjunto de escopos!" }, status: :forbidden and return
+    end
 
+    @tb_policy = TbPolicy.find_by(id: params[:id])
+    if @tb_policy
+      render json: @tb_policy, status: :ok
+    else
+      render json: { error: "Política não encontrada" }, status: :not_found
+    end
   end
 
   # POST /tb_policies
   def create
 
+    unless has_scope?(["ADMIN_SCOPE", "OPERATOR_SCOPE"])
+      render json: { error: "Acesso restrito para seu conjunto de escopos!" }, status: :forbidden and return
+    end
+
+    service = TbPolicyCreatorService.new(tb_policy_params, request.env["jwt.payload"])
+
+    result = service.saveEntity
+
+    if result[:success]
+      render json: result[:tb_policy], status: :created
+    else
+      render json: { errors: result[:errors] }, status: :unprocessable_entity
+    end
   end
 
   # PATCH/PUT /tb_policies/1
   def update
+
+    service = TbPolicyCreatorService.new(tb_policy_params, request.env["jwt.payload"])
+
+    result = service.updateEntity(params[:id])
+
+    if result[:success]
+      render json: result[:tb_policy], status: :created
+    else
+      render json: { errors: result[:errors] }, status: :unprocessable_entity
+    end
 
   end
 
@@ -69,14 +87,12 @@ class TbPoliciesController < ApplicationController
   end
 
   def edit
-    @tb_policy = TbPolicy.find(params[:id])
-    render json: @tb_policy, status: :ok
+
   end
 
   private
 
   def tb_policy_params
-    params.require(:tb_policy).permit(:name, :description, :active)
+    params.require(:tb_policy).permit(:id, :policy_number, :tb_customer_id, :start_date, :end_date, :status, :created_at, :updated_at)
   end
-
 end

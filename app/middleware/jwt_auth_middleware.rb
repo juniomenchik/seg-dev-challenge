@@ -1,5 +1,4 @@
 class JwtAuthMiddleware
-
   def initialize(app)
     @app = app
   end
@@ -14,20 +13,23 @@ class JwtAuthMiddleware
 
     if auth_header.start_with?("Basic ")
       # Permite passar para endpoints que usam Basic Auth (ex: /app/token)
-      return @app.call(env)
+      @app.call(env)
     elsif auth_header.start_with?("Bearer ")
       token = auth_header.split(" ", 2).last
+
       begin
         secret = Rails.application.secret_key_base
         decoded = JWT.decode(token, secret, false, { algorithm: "HS256" })
         payload = decoded[0]
+
         env["jwt.payload"] = payload
       rescue JWT::DecodeError => e
         return [401, { "Content-Type" => "application/json" }, [{ error: "Token inválido", message: e.message }.to_json]]
       end
-      return @app.call(env)
+      @app.call(env)
     else
-      return [401, { "Content-Type" => "application/json" }, [{ error: "Tipo de Authorization não suportado" }.to_json]]
+      [401, { "Content-Type" => "application/json" }, [{ error: "Tipo de Authorization não suportado" }.to_json]]
     end
+
   end
 end
