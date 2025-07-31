@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1c69684-365b-44d5-8d05-aada0a1c2392" name="Changes" comment="[master] docker-compose well configured. Database go on with no errors.">
-      <change beforePath="$PROJECT_DIR$/.idea/copilotDiffState.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilotDiffState.xml" afterDir="false" />
+    <list default="true" id="c1c69684-365b-44d5-8d05-aada0a1c2392" name="Changes" comment="[master] fake positive, needed to deactive the migrations to docker-compose work.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/environments/development.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/environments/development.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/tb_customers_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/tb_customers_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/tb_policy_creator_service.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/tb_policy_creator_service.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +58,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Test::Unit/Shoulda/Minitest.All tests in test: seg-dev-challenge.executor": "Run",
     "ToolWindow.GitHub Copilot Chat.ShowToolbar": "false",
     "com.intellij.lang.ruby.rbs.tools.collection.workspace.sync.RbsCollectionUpdateProjectActivity#LAST_UPDATE_TIMESTAMP": "1753981322575",
     "git-widget-placeholder": "master",
@@ -82,7 +82,7 @@
       <recent name="C:\git\seg-dev-challenge\postman\v1" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.docker-compose.yaml: Compose Deployment">
+  <component name="RunManager" selected="Test::Unit/Shoulda/Minitest.All tests in test: seg-dev-challenge">
     <configuration name="All in generated-requests" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http">
       <method v="2" />
     </configuration>
@@ -152,6 +152,33 @@
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_TESTOPTS" VALUE="" />
       <method v="2" />
     </configuration>
+    <configuration name="All tests in test: seg-dev-challenge" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest" temporary="true">
+      <module name="seg-dev-challenge" />
+      <predefined_log_file enabled="true" id="RUBY_TESTUNIT" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-Itest" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs>
+        <env name="RAILS_ENV" value="test" />
+        <env name="JRUBY_OPTS" value="-X+O" />
+      </envs>
+      <EXTENSION ID="BundlerRunConfigurationExtension" BUNDLE_MODE="AUTO" bundleExecEnabled="true" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" ENABLE_BRANCH_COVERAGE="true" ENABLE_FORKED_COVERAGE="true" />
+      <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="$MODULE_DIR$/test" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPTS_PATHS" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/{*_test,test_*,*_spec}.rb" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_METHOD_NAME" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="ALL_IN_FOLDER" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="SPRING" VALUE="false" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
       <deployment type="dockerfile">
         <settings>
@@ -174,6 +201,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Test::Unit/Shoulda/Minitest.All tests in test: seg-dev-challenge" />
         <item itemvalue="Docker.docker-compose.yaml: Compose Deployment" />
         <item itemvalue="Docker.Dockerfile" />
         <item itemvalue="HTTP Request.generated-requests | #1" />
@@ -199,7 +227,7 @@
       <workItem from="1753885752129" duration="7322000" />
       <workItem from="1753894741327" duration="18393000" />
       <workItem from="1753931611074" duration="12049000" />
-      <workItem from="1753981264445" duration="6483000" />
+      <workItem from="1753981264445" duration="6842000" />
     </task>
     <task id="LOCAL-00001" summary="[master] adding tb_customers flux, crud, requests and postman tests.">
       <option name="closed" value="true" />
@@ -265,7 +293,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753987017009</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="[master] fake positive, needed to deactive the migrations to docker-compose work.">
+      <option name="closed" value="true" />
+      <created>1753988081660</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1753988081660</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,7 +325,8 @@
     <MESSAGE value="[master] Polices refactored to use policy service." />
     <MESSAGE value="[master] token was not being monitored his expiration." />
     <MESSAGE value="[master] docker-compose well configured. Database go on with no errors." />
-    <option name="LAST_COMMIT_MESSAGE" value="[master] docker-compose well configured. Database go on with no errors." />
+    <MESSAGE value="[master] fake positive, needed to deactive the migrations to docker-compose work." />
+    <option name="LAST_COMMIT_MESSAGE" value="[master] fake positive, needed to deactive the migrations to docker-compose work." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -315,5 +352,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/seg_dev_challenge@seg_dev_challenge.rcov" NAME="seg-dev-challenge Coverage Results" MODIFIED="1753985653621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@All_tests_in_test__seg_dev_challenge.rcov" NAME="All tests in test: seg-dev-challenge Coverage Results" MODIFIED="1753988091308" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
   </component>
 </project>
