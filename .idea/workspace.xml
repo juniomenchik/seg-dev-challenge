@@ -4,25 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1c69684-365b-44d5-8d05-aada0a1c2392" name="Changes" comment="[master] adding tb_customers flux, crud, requests and postman tests.">
-      <change afterPath="$PROJECT_DIR$/app/controllers/app_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/middleware/jwt_auth_middleware.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/services/policies_service.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/init.sql" afterDir="false" />
+    <list default="true" id="c1c69684-365b-44d5-8d05-aada0a1c2392" name="Changes" comment="[master] extra">
       <change beforePath="$PROJECT_DIR$/.idea/copilotDiffState.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilotDiffState.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/seg-dev-challenge.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/seg-dev-challenge.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/tb_customers_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/tb_customers_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/tb_customer_service.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/tb_customer_service.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/application.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/application.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20250730140322_create_tb_customers.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250730140322_create_tb_customers.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/app_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/app_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/tb_policies_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/tb_policies_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/policies_service.rb" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +183,7 @@
       <option name="presentableId" value="Default" />
       <updated>1753885751704</updated>
       <workItem from="1753885752129" duration="7322000" />
-      <workItem from="1753894741327" duration="13891000" />
+      <workItem from="1753894741327" duration="18393000" />
     </task>
     <task id="LOCAL-00001" summary="[master] adding tb_customers flux, crud, requests and postman tests.">
       <option name="closed" value="true" />
@@ -214,7 +201,23 @@
       <option name="project" value="LOCAL" />
       <updated>1753894358842</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="[master] implement JWT authentication and authorization middleware; add token generation endpoint">
+      <option name="closed" value="true" />
+      <created>1753916502665</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1753916502665</updated>
+    </task>
+    <task id="LOCAL-00004" summary="[master] extra">
+      <option name="closed" value="true" />
+      <created>1753916514335</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1753916514335</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,7 +225,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="[master] adding tb_customers flux, crud, requests and postman tests." />
-    <option name="LAST_COMMIT_MESSAGE" value="[master] adding tb_customers flux, crud, requests and postman tests." />
+    <MESSAGE value="[master] implement JWT authentication and authorization middleware; add token generation endpoint" />
+    <MESSAGE value="[master] extra" />
+    <option name="LAST_COMMIT_MESSAGE" value="[master] extra" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -235,10 +240,34 @@
           </properties>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/app/controllers/tb_policies_controller.rb</url>
+          <line>1</line>
+          <properties myBlockOrdinal="-1">
+            <option name="block-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/app/controllers/app_controller.rb</url>
+          <line>5</line>
+          <properties myBlockOrdinal="-1">
+            <option name="block-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/app/controllers/tb_policies_controller.rb</url>
+          <line>31</line>
+          <properties myBlockOrdinal="-1">
+            <option name="block-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/seg_dev_challenge@seg_dev_challenge.rcov" NAME="seg-dev-challenge Coverage Results" MODIFIED="1753915781495" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@seg_dev_challenge.rcov" NAME="seg-dev-challenge Coverage Results" MODIFIED="1753921098611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
   </component>
 </project>
