@@ -9,6 +9,12 @@ class TbPoliciesController < ApplicationController
   before_action do
     @token_service = TbTokenService.new(request)
     @user_cpf = request.env["jwt.payload"] && request.env["jwt.payload"]["sub"]
+
+    # Verificar se o token está expirado
+    if @token_service.token_expired?
+      render json: { error: "Token expirado" }, status: :unauthorized
+    end
+
   end
 
   before_action only: [:update, :destroy] do

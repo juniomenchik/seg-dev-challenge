@@ -3,10 +3,21 @@ class TbCustomersController < ApplicationController
   before_action :require_admin_scope
   skip_before_action :verify_authenticity_token
 
+  before_action do
+    @user_cpf = request.env["jwt.payload"] && request.env["jwt.payload"]["sub"]
+  end
+
   def require_admin_scope
-    payload = request.env["jwt.payload"]
-    unless payload && payload["scope"] == "ADMIN_SCOPE"
-      render json: { error: "Acesso restrito para o Scope Admin" }, status: :forbidden
+    @token_service = TbTokenService.new(request)
+
+    # Verificar primeiro se o token está expirado
+    if @token_service.token_expired?
+      render json: { error: "Token expirado" }, status: :unauthorized
+      return
+    end
+
+    unless @token_service.has_scope?(["ADMIN_SCOPE"])
+      render json: { error: "Escopo insuficiente" }, status: :forbidden
     end
   end
 
