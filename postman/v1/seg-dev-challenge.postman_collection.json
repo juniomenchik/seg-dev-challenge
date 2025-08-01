@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "377784ed-0b78-442f-a9f2-0c53afc0dd4e",
-		"name": "seg-dev-challenge",
+		"_postman_id": "1448dcd2-ba66-4e28-a7e1-da467eb06791",
+		"name": "seg-dev-challenge Copy",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "16001297",
-		"_collection_link": "https://jeffs-workhome.postman.co/workspace/PERSONAL-SPACE~2759921e-d7a6-4dbb-b5a1-156391205581/collection/16001297-377784ed-0b78-442f-a9f2-0c53afc0dd4e?action=share&source=collection_link&creator=16001297"
+		"_collection_link": "https://jeffs-workhome.postman.co/workspace/2759921e-d7a6-4dbb-b5a1-156391205581/collection/16001297-1448dcd2-ba66-4e28-a7e1-da467eb06791?action=share&source=collection_link&creator=16001297"
 	},
 	"item": [
 		{
@@ -32,6 +32,8 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
+											"// Set the ruby_host environment variable\r",
+											"pm.environment.set(\"ruby_host\", \"http://localhost:3000\");\r",
 											""
 										],
 										"type": "text/javascript",
@@ -58,9 +60,9 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{ruby_on_rails_host}}/app/token",
+									"raw": "{{ruby_host}}/app/token",
 									"host": [
-										"{{ruby_on_rails_host}}"
+										"{{ruby_host}}"
 									],
 									"path": [
 										"app",
@@ -80,6 +82,18 @@
 											"const responseData = pm.response.json();\r",
 											"// Set the generated CPF as an environment variable\r",
 											"pm.collectionVariables.set('token', responseData.token);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Set the ruby_host environment variable\r",
+											"pm.environment.set(\"ruby_host\", \"http://localhost:3000\");\r",
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -105,9 +119,9 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{ruby_on_rails_host}}/app/token",
+									"raw": "{{ruby_host}}/app/token",
 									"host": [
-										"{{ruby_on_rails_host}}"
+										"{{ruby_host}}"
 									],
 									"path": [
 										"app",
@@ -127,6 +141,18 @@
 											"const responseData = pm.response.json();\r",
 											"// Set the generated CPF as an environment variable\r",
 											"pm.collectionVariables.set('token', responseData.token);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Set the ruby_host environment variable\r",
+											"pm.environment.set(\"ruby_host\", \"http://localhost:3000\");\r",
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -152,9 +178,9 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{ruby_on_rails_host}}/app/token",
+									"raw": "{{ruby_host}}/app/token",
 									"host": [
-										"{{ruby_on_rails_host}}"
+										"{{ruby_host}}"
 									],
 									"path": [
 										"app",
@@ -176,6 +202,12 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
+											"// Set the ruby_host environment variable\r",
+											"pm.environment.set(\"ruby_host\", \"http://localhost:3000\");\r",
+											"\r",
+											"\r",
+											"\r",
+											"\r",
 											"// Generate a random CPF number and set it as an environment variable\r",
 											"function generateRandomCPF() {\r",
 											"    let cpf = '';\r",
@@ -303,9 +335,9 @@
 									}
 								},
 								"url": {
-									"raw": "{{ruby_on_rails_host}}/app/v1/tb_customers",
+									"raw": "{{ruby_host}}/app/v1/tb_customers",
 									"host": [
-										"{{ruby_on_rails_host}}"
+										"{{ruby_host}}"
 									],
 									"path": [
 										"app",
@@ -380,6 +412,18 @@
 										"type": "text/javascript",
 										"packages": {}
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Set the ruby_host environment variable\r",
+											"pm.environment.set(\"ruby_host\", \"http://localhost:3000\");\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
 								}
 							],
 							"request": {
@@ -396,9 +440,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{ruby_on_rails_host}}/app/v1/tb_customers",
+									"raw": "{{ruby_host}}/app/v1/tb_customers",
 									"host": [
-										"{{ruby_on_rails_host}}"
+										"{{ruby_host}}"
 									],
 									"path": [
 										"app",
@@ -416,6 +460,8 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
+											"// Set the ruby_host environment variable\r",
+											"pm.environment.set(\"ruby_host\", \"http://localhost:3000\");\r",
 											""
 										],
 										"type": "text/javascript",
@@ -482,9 +528,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{ruby_on_rails_host}}/app/v1/tb_customers/{{cpf_atual}}",
+									"raw": "{{ruby_host}}/app/v1/tb_customers/{{cpf_atual}}",
 									"host": [
-										"{{ruby_on_rails_host}}"
+										"{{ruby_host}}"
 									],
 									"path": [
 										"app",
@@ -544,6 +590,18 @@
 										"type": "text/javascript",
 										"packages": {}
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Set the ruby_host environment variable\r",
+											"pm.environment.set(\"ruby_host\", \"http://localhost:3000\");\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
 								}
 							],
 							"request": {
@@ -569,9 +627,9 @@
 									}
 								},
 								"url": {
-									"raw": "{{ruby_on_rails_host}}/app/v1/tb_customers/{{cpf_atual}}",
+									"raw": "{{ruby_host}}/app/v1/tb_customers/{{cpf_atual}}",
 									"host": [
-										"{{ruby_on_rails_host}}"
+										"{{ruby_host}}"
 									],
 									"path": [
 										"app",
@@ -627,6 +685,18 @@
 										"type": "text/javascript",
 										"packages": {}
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Set the ruby_host environment variable\r",
+											"pm.environment.set(\"ruby_host\", \"http://localhost:3000\");\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
 								}
 							],
 							"request": {
@@ -652,9 +722,9 @@
 									}
 								},
 								"url": {
-									"raw": "{{ruby_on_rails_host}}/app/v1/tb_customers/{{cpf_atual}}",
+									"raw": "{{ruby_host}}/app/v1/tb_customers/{{cpf_atual}}",
 									"host": [
-										"{{ruby_on_rails_host}}"
+										"{{ruby_host}}"
 									],
 									"path": [
 										"app",
@@ -668,6 +738,20 @@
 						},
 						{
 							"name": "DeleteById",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Set the ruby_host environment variable\r",
+											"pm.environment.set(\"ruby_host\", \"http://localhost:3000\");\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -688,9 +772,9 @@
 									}
 								],
 								"url": {
-									"raw": "{{ruby_on_rails_host}}/app/v1/tb_customers/{{cpf_atual}}",
+									"raw": "{{ruby_host}}/app/v1/tb_customers/{{cpf_atual}}",
 									"host": [
-										"{{ruby_on_rails_host}}"
+										"{{ruby_host}}"
 									],
 									"path": [
 										"app",
@@ -1005,11 +1089,21 @@
 								}
 							],
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "PUT",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"id\": \"04636075030\",\r\n    \"username\": \"usuario_putado\",\r\n    \"password\": \"senha_segura\",\r\n    \"role\": \"admin\",\r\n    \"createdAt\": \"2025-07-30T16:10:57.809Z\",\r\n    \"updatedAt\": \"2025-07-30T16:10:57.809Z\"\r\n}",
+									"raw": "{\r\n    \"tb_customer_id\": \"00011122233\",\r\n    \"start_date\": \"2023-01-01T00:00:00.000Z\",\r\n    \"end_date\": \"2023-12-31T23:59:59.000Z\",\r\n    \"status\": \"ACTIVE\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1068,6 +1162,54 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "Splunk Log Test",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Set the ruby_host environment variable\r",
+									"pm.environment.set(\"splunk_host\", \"https://localhost:8088\");\r",
+									"pm.environment.set(\"splunk_token\", \"32bb54a7-646a-4d3e-bf65-3cbbd9075a56\");\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Splunk {{splunk_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"event\": \"Testando index main\",\n    // ,\n    // \"sourcetype\": \"_json\",\n    // \"source\": \"middleware\",\n    \"index\": \"main\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{splunk_host}}/services/collector/event",
+							"host": [
+								"{{splunk_host}}"
+							],
+							"path": [
+								"services",
+								"collector",
+								"event"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
@@ -1098,6 +1240,11 @@
 		{
 			"key": "policy_id",
 			"value": ""
+		},
+		{
+			"key": "splunk_token",
+			"value": "",
+			"type": "default"
 		}
 	]
 }

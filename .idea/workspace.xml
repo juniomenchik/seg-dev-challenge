@@ -4,18 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1c69684-365b-44d5-8d05-aada0a1c2392" name="Changes" comment="[master] fake positive, needed to deactive the migrations to docker-compose work.">
-      <change afterPath="$PROJECT_DIR$/img_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copilotDiffState.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilotDiffState.xml" afterDir="false" />
+    <list default="true" id="c1c69684-365b-44d5-8d05-aada0a1c2392" name="Changes" comment="[master] splunk fully configured for docker-compose.yaml&#10;and own challenge completed.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/application.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/application.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/initializers/splunk_logger.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/splunk_logger.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/splunk/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/splunk/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/splunk/init.sh" beforeDir="false" afterPath="$PROJECT_DIR$/splunk/init.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postman/v1/seg-dev-challenge.postman_collection.json" beforeDir="false" afterPath="$PROJECT_DIR$/postman/v1/seg-dev-challenge.postman_collection.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -325,7 +316,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753988081660</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="[master] splunk fully configured for docker-compose.yaml&#10;and own challenge completed.">
+      <option name="closed" value="true" />
+      <created>1754079583830</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1754079583831</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,7 +349,8 @@
     <MESSAGE value="[master] token was not being monitored his expiration." />
     <MESSAGE value="[master] docker-compose well configured. Database go on with no errors." />
     <MESSAGE value="[master] fake positive, needed to deactive the migrations to docker-compose work." />
-    <option name="LAST_COMMIT_MESSAGE" value="[master] fake positive, needed to deactive the migrations to docker-compose work." />
+    <MESSAGE value="[master] splunk fully configured for docker-compose.yaml&#10;and own challenge completed." />
+    <option name="LAST_COMMIT_MESSAGE" value="[master] splunk fully configured for docker-compose.yaml&#10;and own challenge completed." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
