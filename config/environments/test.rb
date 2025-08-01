@@ -6,6 +6,9 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Disable migration check since we use custom SQL script
+  config.active_record.migration_error = false
+
   # While tests run files are not watched, reloading is not necessary.
   config.enable_reloading = false
 

@@ -17,7 +17,11 @@ module SegDevChallenge
     config.autoload_lib(ignore: %w[assets tasks])
 
     require_relative '../app/middleware/jwt_auth_middleware'
+    require_relative '../app/middleware/metrics_middleware'
     config.autoload_paths << Rails.root.join('app', 'middleware')
+
+    # Adicionar middlewares na ordem correta
+    config.middleware.use MetricsMiddleware
     config.middleware.use JwtAuthMiddleware
 
     # Configuration for the application, engines, and railties goes here.

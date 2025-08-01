@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS tb_customers (
 -- Criação da tabela tb_policies
 CREATE TABLE IF NOT EXISTS tb_policies (
   id UUID PRIMARY KEY,
-  policy_number VARCHAR(12) NOT NULL,
+  policy_number VARCHAR(12) NOT NULL UNIQUE,
   tb_customer_id VARCHAR NOT NULL REFERENCES tb_customers(id),
   start_date TIMESTAMP,
   end_date TIMESTAMP,

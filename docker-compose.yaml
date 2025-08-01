@@ -1,5 +1,27 @@
 services:
 
+  ruby_app:
+    container_name: ruby_app
+    build: .
+    restart: always
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/app
+    environment:
+      - DOCKERENV=true
+      - RAILS_ENV=development
+      - SPLUNK_HOST=splunk
+      - SPLUNK_PORT=8088
+      - SPLUNK_TOKEN=283f76a5-2270-42f2-843c-6a6dd260cc40
+      - SPLUNK_INDEX=rails_app
+    depends_on:
+      - postgres
+      - splunk
+    networks:
+      - internal-network
+
   postgres:
     container_name: postgres
     image: postgres:15-alpine
@@ -29,22 +51,29 @@ services:
     networks:
       - internal-network
 
-  ruby_app:
-    container_name: ruby_app
-    build: .
-    restart: always
-    working_dir: /app
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./:/app
+  splunk:
+    build:
+      context: .
+      dockerfile: splunk/Dockerfile
+    container_name: splunk
+    user: root
     environment:
-      - DOCKERENV=true
-      - RAILS_ENV=development
-    depends_on:
-      - postgres
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=SenhaForte123
+      - SPLUNK_HEC_TOKEN=32bb54a7-646a-4d3e-bf65-3cbbd9075a56
+    ports:
+      - "8000:8000"
+      - "8088:8088"
     networks:
       - internal-network
+    volumes:
+      - splunk-data:/opt/splunk/var
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8088/services/collector/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 120s
 
 networks:
   internal-network:
@@ -52,3 +81,6 @@ networks:
 
 volumes:
   postgres_data:
+  prometheus_data:
+  splunk-data:
+  grafana-storage:

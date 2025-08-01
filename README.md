@@ -51,11 +51,6 @@ Quando terminar, responda este e-mail com o link do repositório público no Git
 Você terá até o dia **02/08** para terminar. Se não conseguir finalizar tudo no tempo, envie o que conseguiu.
 
 
-[desafios proprios.]
- - docker-compose up  [ OK ]
- - Testes unitários.
- - Teste de container.
-
 
 ## 📝 Instruções
 # Necessario Docker na máquina
@@ -65,9 +60,26 @@ $cd seg-dev-challenge
 $docker-compose up -d
 
 
+# Collection POSTMAN v2
+- postman/v1/seg-dev-challenge.postman_collection.json
 # Acesse o banco de dados em http://localhost:5400/
 
 # gerar token
 curl --location --request POST 'http://localhost:3000/app/token' \
 --header 'Authorization: Basic anVuaW9tZW5jaGlrOjExMTEyMDAw'
 
+# Para verificar os logs no Splunk
+http://localhost:8000/
+
+source="http:any" (index-"rails_app")
+
+![img.png](img.png)
+
+
+# Melhorias no futuro.
+ - Implementar Observabilidade para monitoramento
+   - Splunk melhor configurado.
+ - Implementar Servico de Mensageria para eventos
+   - Kafka, RabbitMQ
+ - Implementar testes de api
+   - RSpec, Minitest

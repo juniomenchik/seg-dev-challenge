@@ -21,7 +21,7 @@ class TbPolicyCreatorService
       return { success: false, errors: ["O policy_number deve ter exatamente 12 dígitos."] }
     end
 
-    tb_policy.policy_number = @params["policy_number"]
+    # tb_policy.policy_number = @params["policy_number"]  Faz sentido ?
     tb_policy.tb_customer_id = @params["tb_customer_id"]
     tb_policy.start_date = @params[:start_date]
     tb_policy.end_date = @params[:end_date]
