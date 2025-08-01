@@ -71,10 +71,9 @@ curl --location --request POST 'http://localhost:3000/app/token' \
 # Para verificar os logs no Splunk
 http://localhost:8000/
 
-source="http:any" (index-"rails_app")
+source="*" (index="*")
 
-![img.png](img.png)
-
+![img_1.png](img_1.png)
 
 # Melhorias no futuro.
  - Implementar Observabilidade para monitoramento

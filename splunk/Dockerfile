@@ -1,10 +1,8 @@
 FROM splunk/splunk:latest
 
-USER root
+# Apenas copia o script de configuração
+COPY splunk/init.sh /opt/splunk/bin/configure-hec.sh
+RUN chmod +x /opt/splunk/bin/configure-hec.sh
 
-COPY splunk/init.sh /opt/splunk/bin/init.sh
-RUN chmod +x /opt/splunk/bin/init.sh
-
-USER splunk
-
-CMD ["/opt/splunk/bin/init.sh"]
+# Usa o entrypoint padrão do Splunk
+# O script de configuração será executado após o Splunk iniciar

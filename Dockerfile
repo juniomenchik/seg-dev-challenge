@@ -22,10 +22,11 @@ COPY . .
 ENV SPLUNK_HOST=splunk \
     SPLUNK_PORT=8088 \
     SPLUNK_TOKEN=32bb54a7-646a-4d3e-bf65-3cbbd9075a56 \
-    SPLUNK_INDEX=rails_app \
-    SPLUNK_SOURCE=middleware \
-    SPLUNK_SOURCETYPE=_json \
-    SPLUNK_SSL=false \
+    SPLUNK_INDEX=main \
+#    SPLUNK_SOURCE=middleware \
+    DOCKERENV=true \
+#    SPLUNK_SOURCETYPE=_json \
+#    SPLUNK_SSL=false \
     RAILS_ENV=development \
     DATABASE_URL=postgresql://postgres:postgres@postgres:5432/postgres \
     SECRET_KEY_BASE=your-secret-key-base-here \

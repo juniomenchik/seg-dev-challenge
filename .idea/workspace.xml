@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1c69684-365b-44d5-8d05-aada0a1c2392" name="Changes" comment="[master] fake positive, needed to deactive the migrations to docker-compose work.">
+      <change afterPath="$PROJECT_DIR$/img_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilotDiffState.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilotDiffState.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/tb_customers_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/tb_customers_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/tb_policy_creator_service.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/tb_policy_creator_service.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/application.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/application.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/splunk_logger.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/splunk_logger.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/splunk/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/splunk/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/splunk/init.sh" beforeDir="false" afterPath="$PROJECT_DIR$/splunk/init.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +66,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SHELLCHECK.PATH": "C:\\Users\\junio\\AppData\\Roaming\\JetBrains\\RubyMine2025.1\\plugins\\Shell Script\\shellcheck.exe",
+    "Shell Script.configure-splunk-hec.sh.executor": "Run",
     "Test::Unit/Shoulda/Minitest.All tests in test: seg-dev-challenge.executor": "Run",
     "ToolWindow.GitHub Copilot Chat.ShowToolbar": "false",
     "com.intellij.lang.ruby.rbs.tools.collection.workspace.sync.RbsCollectionUpdateProjectActivity#LAST_UPDATE_TIMESTAMP": "1753981322575",
@@ -82,10 +92,7 @@
       <recent name="C:\git\seg-dev-challenge\postman\v1" />
     </key>
   </component>
-  <component name="RunManager" selected="Test::Unit/Shoulda/Minitest.All tests in test: seg-dev-challenge">
-    <configuration name="All in generated-requests" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http">
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Rails.seg-dev-challenge">
     <configuration name="generated-requests | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" executionIdentifier="#1" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -152,6 +159,21 @@
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_TESTOPTS" VALUE="" />
       <method v="2" />
     </configuration>
+    <configuration name="configure-splunk-hec.sh" type="ShConfigurationType" temporary="true">
+      <option name="SCRIPT_TEXT" value="" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/configure-splunk-hec.sh" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="true" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="All tests in test: seg-dev-challenge" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest" temporary="true">
       <module name="seg-dev-challenge" />
       <predefined_log_file enabled="true" id="RUBY_TESTUNIT" />
@@ -188,7 +210,9 @@
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile" />
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
       <method v="2" />
     </configuration>
     <configuration name="docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
@@ -201,11 +225,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Shell Script.configure-splunk-hec.sh" />
         <item itemvalue="Test::Unit/Shoulda/Minitest.All tests in test: seg-dev-challenge" />
         <item itemvalue="Docker.docker-compose.yaml: Compose Deployment" />
         <item itemvalue="Docker.Dockerfile" />
         <item itemvalue="HTTP Request.generated-requests | #1" />
-        <item itemvalue="HTTP Request.All in generated-requests" />
       </list>
     </recent_temporary>
   </component>
@@ -347,11 +371,41 @@
           </properties>
           <option name="timeStamp" value="79" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/app/middleware/metrics_middleware.rb</url>
+          <line>12</line>
+          <properties myBlockOrdinal="-1">
+            <option name="block-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="117" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/seg_dev_challenge@seg_dev_challenge.rcov" NAME="seg-dev-challenge Coverage Results" MODIFIED="1753985653621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
-    <SUITE FILE_PATH="coverage/seg_dev_challenge@All_tests_in_test__seg_dev_challenge.rcov" NAME="All tests in test: seg-dev-challenge Coverage Results" MODIFIED="1753988091308" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@AppControllerTest.rcov" NAME="AppControllerTest Coverage Results" MODIFIED="1754001080778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@TbCustomersControllerTest.rcov" NAME="TbCustomersControllerTest Coverage Results" MODIFIED="1753989413702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@TbCustomerService__when_condition.rcov" NAME="TbCustomerService::when condition Coverage Results" MODIFIED="1753990354796" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@test_saveEntity_falha_quando_cliente_não_existe.rcov" NAME="test_saveEntity_falha_quando_cliente_não_existe Coverage Results" MODIFIED="1754000673747" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@test_saveEntity_cria_uma_nova_policy_com_sucesso.rcov" NAME="test_saveEntity_cria_uma_nova_policy_com_sucesso Coverage Results" MODIFIED="1753992648002" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@TbPoliciesTest.rcov" NAME="TbPoliciesTest Coverage Results" MODIFIED="1753989192728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@seg_dev_challenge.rcov" NAME="seg-dev-challenge Coverage Results" MODIFIED="1754079197576" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@test_cria_um_novo_TbCustomer_com_sucesso.rcov" NAME="test_cria_um_novo_TbCustomer_com_sucesso Coverage Results" MODIFIED="1753990951457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@test_token_com_autenticacao_valida.rcov" NAME="test_token_com_autenticacao_valida Coverage Results" MODIFIED="1753989826033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@TbCustomerService.rcov" NAME="TbCustomerService Coverage Results" MODIFIED="1753990132698" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@test_cria_um_novo_TbCustomer_com_sucesso__e_faz_o_update_dele.rcov" NAME="test_cria_um_novo_TbCustomer_com_sucesso,_e_faz_o_update_dele Coverage Results" MODIFIED="1753992209652" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@test_falha_ao_criar_TbCustomer_com_ID_duplicado.rcov" NAME="test_falha_ao_criar_TbCustomer_com_ID_duplicado Coverage Results" MODIFIED="1753991118069" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@tb_policy_test_rb.rcov" NAME="tb_policy_test.rb Coverage Results" MODIFIED="1753989010902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@TbCustomersTest.rcov" NAME="TbCustomersTest Coverage Results" MODIFIED="1753988363590" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@AppController.rcov" NAME="AppController Coverage Results" MODIFIED="1754000913884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@tb_customer_service_spec_rb.rcov" NAME="tb_customer_service_spec.rb Coverage Results" MODIFIED="1753992342669" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@test_cria_um_novo_TbCustomer_com_sucesso__e_faz_o_delete_dele.rcov" NAME="test_cria_um_novo_TbCustomer_com_sucesso,_e_faz_o_delete_dele Coverage Results" MODIFIED="1753992329687" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@All_tests_in_test__seg_dev_challenge.rcov" NAME="All tests in test: seg-dev-challenge Coverage Results" MODIFIED="1754000717316" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@tb_customer_test_rb.rcov" NAME="tb_customer_test.rb Coverage Results" MODIFIED="1753988869024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@application.rcov" NAME="application Coverage Results" MODIFIED="1754002381973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@test_falha_ao_criar_TbCustomer_com_username_duplicado.rcov" NAME="test_falha_ao_criar_TbCustomer_com_username_duplicado Coverage Results" MODIFIED="1753991255054" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@TbPolicyTest.rcov" NAME="TbPolicyTest Coverage Results" MODIFIED="1753989146158" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@test_splunk_logging.rcov" NAME="test_splunk_logging Coverage Results" MODIFIED="1754006227969" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
+    <SUITE FILE_PATH="coverage/seg_dev_challenge@TbCustomerServiceTest.rcov" NAME="TbCustomerServiceTest Coverage Results" MODIFIED="1753990506528" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="seg-dev-challenge" />
   </component>
 </project>

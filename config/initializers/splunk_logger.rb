@@ -16,13 +16,13 @@ class AppLogger
     begin
       splunk_host = ENV.fetch('SPLUNK_HOST', 'splunk')
       splunk_port = ENV.fetch('SPLUNK_PORT', '8088')
-      splunk_token = ENV.fetch('SPLUNK_TOKEN', '283f76a5-2270-42f2-843c-6a6dd260cc40')
-      splunk_index = ENV.fetch('SPLUNK_INDEX', 'rails_app')
+      splunk_token = ENV.fetch('SPLUNK_TOKEN', '32bb54a7-646a-4d3e-bf65-3cbbd9075a56')
 
-      uri = URI("http://#{splunk_host}:#{splunk_port}/services/collector")
+      uri = URI("https://#{splunk_host}:#{splunk_port}/services/collector/event")  # Manter https como no curl
 
       http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = false
+      http.use_ssl = true  # Mudança para true para usar HTTPS como no curl
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE  # Pular verificação SSL para localhost
       http.read_timeout = 10
       http.open_timeout = 10
 
@@ -30,19 +30,11 @@ class AppLogger
       request['Authorization'] = "Splunk #{splunk_token}"
       request['Content-Type'] = 'application/json'
 
-      # Estrutura de envio conforme especificado - log_data direto no event
+      # Estrutura igual ao curl que funciona
       splunk_payload = {
-        event: log_data, # Objeto JSON direto, não string
-        fields: {
-          host: ENV.fetch('HOSTNAME', 'ruby_app'),
-          index: splunk_index,
-          source: "middleware",
-          sourcetype: "_json",
-          application: "seg-dev-challenge",
-          environment: Rails.env
-        }
+        event: log_data,  # Enviar o objeto completo como no formato que funciona
+        index: "main"
       }
-
       request.body = splunk_payload.to_json
 
       response = http.request(request)
