@@ -72,7 +72,7 @@ curl --location --request POST 'http://localhost:3000/app/token' \
 http://localhost:8000/
 
 source="*" (index="*")
-
+![img.png](img.png)
 ![img_1.png](img_1.png)
 
 # Melhorias no futuro.
@@ -80,5 +80,5 @@ source="*" (index="*")
    - Splunk melhor configurado.
  - Implementar Servico de Mensageria para eventos
    - Kafka, RabbitMQ
- - Implementar testes de api
-   - RSpec, Minitest
+ - Implementar testes mais descritivos
+   - RSpec

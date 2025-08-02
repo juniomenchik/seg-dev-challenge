@@ -23,18 +23,22 @@ class TbCustomersController < ApplicationController
 
   # GET /tb_customers
   def index
+    AppLogger.info("Iniciando método index", {})
+
     @tb_customers = TbCustomers.all
     render json: @tb_customers
   end
 
   # GET /tb_customers/1
   def show
+    AppLogger.info("Iniciando método show", {})
     @tb_customers = TbCustomers.find_by(id: params[:id])
     render json: @tb_customers
   end
 
   # POST /tb_customers
   def create
+    AppLogger.info("Iniciando método create", {})
     service = TbCustomerService.new(tb_customer_params.merge(id: params[:id]))
 
     result = service.create
@@ -47,6 +51,8 @@ class TbCustomersController < ApplicationController
 
   # PATCH/PUT /tb_customers/1
   def update
+    AppLogger.info("Iniciando método update", {})
+
     service = TbCustomerService.new(tb_customer_params.merge(id: params[:id]))
 
     result = service.update
@@ -59,6 +65,8 @@ class TbCustomersController < ApplicationController
 
   # DELETE /tb_customers/1
   def destroy
+    AppLogger.info("Iniciando método destroy", {})
+
     service = TbCustomerService.new(id: params[:id])
 
     result = service.deleteById

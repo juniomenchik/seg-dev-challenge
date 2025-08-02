@@ -74,6 +74,11 @@ class TbPolicyCreatorService
     tb_policy.updated_at = Time.now
 
     res = tb_policy.save
+
+    AppLogger.info("Salvando Policy: ", {
+      payload: tb_policy.to_json
+    })
+
     unless res
       puts "Erros ao salvar TbPolicy: #{tb_policy.errors.full_messages.inspect}"
     end

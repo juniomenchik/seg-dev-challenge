@@ -32,6 +32,8 @@ class TbPoliciesController < ApplicationController
   end
 
   def index
+    AppLogger.info("Iniciando método index", {})
+
     service = TbPolicyCreatorService.new({}, request.env["jwt.payload"])
 
     if @token_service.has_scope?(["ADMIN_SCOPE", "OPERATOR_SCOPE"])
@@ -49,6 +51,8 @@ class TbPoliciesController < ApplicationController
 
 # GET /tb_policies/1
   def show
+    AppLogger.info("Iniciando método show.", {})
+
     service = TbPolicyCreatorService.new({}, request.env["jwt.payload"])
 
     result = service.findById(params[:id])
@@ -62,6 +66,8 @@ class TbPoliciesController < ApplicationController
 
   # POST /tb_policies
   def create
+    AppLogger.info("Iniciando método create", {})
+
     service = TbPolicyCreatorService.new(tb_policy_params, request.env["jwt.payload"])
 
     result = service.saveEntity
@@ -75,6 +81,8 @@ class TbPoliciesController < ApplicationController
 
   # PATCH/PUT /tb_policies/1
   def update
+    AppLogger.info("Iniciando método update", {})
+
     service = TbPolicyCreatorService.new(tb_policy_params, request.env["jwt.payload"])
 
     result = service.updatePolicy(params[:id])
@@ -89,6 +97,8 @@ class TbPoliciesController < ApplicationController
 
   # DELETE /tb_policies/1
   def destroy
+    AppLogger.info("Iniciando método destroy", {})
+
     service = TbPolicyCreatorService.new({}, request.env["jwt.payload"])
 
     result = service.deleteById(params[:id])
