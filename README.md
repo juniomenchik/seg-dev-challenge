@@ -10,8 +10,8 @@ Implemente uma aplicação simples para gerenciar apólices de seguro, com **3 t
  
 ### Regras
 
-- Um **cliente** pode visualizar apenas as suas próprias apólices [OK]
-- Um **operador** pode criar e visualizar todas as apólices [OK]  
+- Um **cliente** pode visualizar apenas as suas próprias apólices 
+- Um **operador** pode criar e visualizar todas as apólices   
 - Um **admin** pode criar, editar, excluir e visualizar todas as apólices
 - A apólice deve conter no mínimo:
   - Número da apólice com 12 dígitos

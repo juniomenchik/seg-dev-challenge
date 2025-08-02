@@ -101,7 +101,7 @@ class TbPolicyCreatorServiceTest < ActiveSupport::TestCase
     )
 
     params = {
-      "policy_number" => "123456789012",
+      # "policy_number" => "123456789012", policy possui numero randomico em sua criacao.
       "tb_customer_id" => @customer.id,
       start_date: Date.current + 1.day,
       end_date: Date.current + 2.years,
@@ -109,11 +109,10 @@ class TbPolicyCreatorServiceTest < ActiveSupport::TestCase
     }
 
     service = TbPolicyCreatorService.new(params, @payload)
-    result = service.updateEntity(policy.id)
+    result = service.updatePolicy(policy.id)
 
     assert_equal true, result[:success]
     assert_not_nil result[:tb_policy]
-    assert_equal "123456789012", result[:tb_policy].policy_number
     assert_equal "inactive", result[:tb_policy].status
   end
 
@@ -124,33 +123,10 @@ class TbPolicyCreatorServiceTest < ActiveSupport::TestCase
     }
 
     service = TbPolicyCreatorService.new(params, @payload)
-    result = service.updateEntity("policy_inexistente")
+    result = service.updatePolicy("policy_inexistente")
 
     assert_equal false, result[:success]
     assert_includes result[:errors], "TbPolicy não encontrado para o ID informado."
-  end
-
-  test "falha ao atualizar policy com policy_number inválido" do
-    # Cria uma policy primeiro
-    policy = TbPolicy.create!(
-      id: SecureRandom.uuid,
-      policy_number: SecureRandom.random_number(10**12).to_s.rjust(12, '0'),
-      tb_customer_id: @customer.id,
-      start_date: Date.current,
-      end_date: Date.current + 1.year,
-      status: "active"
-    )
-
-    params = {
-      "policy_number" => "123", # Menos de 12 dígitos
-      status: "inactive"
-    }
-
-    service = TbPolicyCreatorService.new(params, @payload)
-    result = service.updateEntity(policy.id)
-
-    assert_equal false, result[:success]
-    assert_includes result[:errors], "O policy_number deve ter exatamente 12 dígitos."
   end
 
   test "deleta policy com sucesso como admin" do

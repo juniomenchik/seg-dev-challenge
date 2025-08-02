@@ -78,8 +78,6 @@ class TbCustomerServiceTest < ActiveSupport::TestCase
     service2 = TbCustomerService.new(params2)
     result2 = service2.create
 
-
-
     assert_equal true, result[:success]
     assert_equal false, result2[:success]
     assert_includes result2[:errors][:username], "USERNAME has already been taken!!!"

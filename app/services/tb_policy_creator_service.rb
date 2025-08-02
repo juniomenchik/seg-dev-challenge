@@ -5,7 +5,7 @@ class TbPolicyCreatorService
     @payload = payload
   end
 
-  def updateEntity(id)
+  def updatePolicy(id)
     tbcustomer = TbCustomers.find_by(id: @payload["sub"])
 
     tb_policy = TbPolicy.find_by(id: id)

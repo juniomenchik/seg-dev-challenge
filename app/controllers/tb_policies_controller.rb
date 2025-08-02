@@ -77,7 +77,7 @@ class TbPoliciesController < ApplicationController
   def update
     service = TbPolicyCreatorService.new(tb_policy_params, request.env["jwt.payload"])
 
-    result = service.updateEntity(params[:id])
+    result = service.updatePolicy(params[:id])
 
     if result[:success]
       render json: result[:tb_policy], status: :created
